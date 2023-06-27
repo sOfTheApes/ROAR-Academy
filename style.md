@@ -1,0 +1,15 @@
+- comments
+	- more then 1/3 lines commented
+	- comments describe the line they are on, or if their line is otherwise blank, the next code block
+	- if a calculation line or lambda calculus is complicated, use backslash linebreaks to spread it out and comment each component
+- variables
+	- no shorthand, do not short the hand.
+	- camelCase (i dont care what it should be, "_" is lame.)
+	- constants are CAPITALS because if you change them i will YELL AT YOU
+- code blocks
+	- USE TABS! One tab per indentation level.
+	- every flow controll must be followed directly after by a new code block with one more level of indentation
+	- must have valid syntax.
+- other
+	- turnery operators exist, use whenever possible
+	- no maximum line size
