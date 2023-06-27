@@ -13,3 +13,4 @@
 - other
 	- turnery operators exist, use whenever possible
 	- no maximum line size
+	- all commands get docstrings to explain arguments and returns, as well as basic usage
