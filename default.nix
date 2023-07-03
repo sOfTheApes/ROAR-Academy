@@ -1,9 +1,8 @@
 { pkgs ? import <nixpkgs> {} }:
 pkgs.mkShell {
-	nativeBuildInputs = with pkgs; [ 
+	packages = with pkgs; [ 
 		jupyter # jupyter-notebook
-		ungoogled-chromium # zoom
-		python3 
 		lazygit
+		(python3.withPackages (ps: with ps; [matplotlib]))
 	];
 }
