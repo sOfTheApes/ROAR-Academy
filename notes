@@ -1,0 +1,11 @@
+- Function (idk)(in format with defined (a,b))
+- data (noisy)
+- penalty function: returns lower values if fed (a,b) that results in functions closer to Function
+- brute force: throw a bunch of (a,b) into PF and find what gives us the lowest value
+- gradient decent: check a point, then go "lamda" distance to another point. repeat until you get to the lowest part. not *perfect*, but a lot better then BF.
+- (a,b) are "learning model coefficents", more complicated AIs have more coefficents (higher dimensions) so are harder to BF
+- more dimensions means more chance to find optimal coefficents, up to a point past which it *will* find it.
+- gradiant = rate of change
+- variable rate of change out of a list of options
+
+a man lost his glasses on the lowest point of a valley. all he can see is his notebook and a pen. he can measure his altitude with the penalty function (he is also a wizard he can just do that). he can walk all over the valley and note the hight of all the points, then go back to the lowest point, but that sucks. he can also use gradient decent, using some funky spells to walk to the lowest point his legs can reach. his legs are lambda inches long. if they are too long, he would just step over the glasses. he can make his legs longer or shorter based on what would get him a better result for each step (he keeps spare legs in his suitcase, you see).
