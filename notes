@@ -9,3 +9,12 @@
 - variable rate of change out of a list of options
 
 a man lost his glasses on the lowest point of a valley. all he can see is his notebook and a pen. he can measure his altitude with the penalty function (he is also a wizard he can just do that). he can walk all over the valley and note the hight of all the points, then go back to the lowest point, but that sucks. he can also use gradient decent, using some funky spells to walk to the lowest point his legs can reach. his legs are lambda inches long. if they are too long, he would just step over the glasses. he can make his legs longer or shorter based on what would get him a better result for each step (he keeps spare legs in his suitcase, you see).
+
+- ConvNets = convolutional network
+- basically apply a bunch of math operations on the image in a pipe
+- kernel is the grid of coefficents that the image is convoluted by
+- convoloution eventually ends in a "feature", which is passed to a non-Conv net after being flattened into a 1-D input
+- essentially training a convoloution-based compression algorithem before feeding the result to a more normal neural net
+- non-conv net is an MLP where the neurons are fully connected
+- max-pooling: a kernel that outputs the max value in each window, makes image-shifting less of a problem
+- MLP = Multi-Layer Perception
