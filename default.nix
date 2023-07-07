@@ -4,6 +4,6 @@ pkgs.mkShell {
 		zoom-us
 		jupyter # jupyter-notebook
 		lazygit
-		(python3.withPackages (ps: with ps; [matplotlib tensorflow keras]))
+		(python3.withPackages (ps: with ps; [pypdf2 regex matplotlib tensorflow keras]))
 	];
 }
