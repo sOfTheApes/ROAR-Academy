@@ -3,59 +3,59 @@
 - data (noisy)
 - penalty function: returns lower values if fed (a,b) that results in functions closer to Function
 - brute force: throw a bunch of (a,b) into PF and find what gives us the lowest value
-- gradient decent: check a point, then go "lamda" distance to another point. repeat until you get to the lowest part. not *perfect*, but a lot better then BF.
-- (a,b) are "learning model coefficents", more complicated AIs have more coefficents (higher dimensions) so are harder to BF
-- more dimensions means more chance to find optimal coefficents, up to a point past which it *will* find it.
-- gradiant = rate of change
+- gradient decent: check a point, then go "lambda" distance to another point. repeat until you get to the lowest part. not *perfect*, but a lot better then BF.
+- (a,b) are "learning model coefficients", more complicated AIs have more coefficients (higher dimensions) so are harder to BF
+- more dimensions means more chance to find optimal coefficients, up to a point past which it *will* find it.
+- gradient = rate of change
 - variable rate of change out of a list of options
 
-a man lost his glasses on the lowest point of a valley. all he can see is his notebook and a pen. he can measure his altitude with the penalty function (he is also a wizard he can just do that). he can walk all over the valley and note the hight of all the points, then go back to the lowest point, but that sucks. he can also use gradient decent, using some funky spells to walk to the lowest point his legs can reach. his legs are lambda inches long. if they are too long, he would just step over the glasses. he can make his legs longer or shorter based on what would get him a better result for each step (he keeps spare legs in his suitcase, you see).
+a man lost his glasses on the lowest point of a valley. all he can see is his notebook and a pen. he can measure his altitude with the penalty function (he is also a wizard he can just do that). he can walk all over the valley and note the height of all the points, then go back to the lowest point, but that sucks. he can also use gradient decent, using some funky spells to walk to the lowest point his legs can reach. his legs are lambda inches long. if they are too long, he would just step over the glasses. he can make his legs longer or shorter based on what would get him a better result for each step (he keeps spare legs in his suitcase, you see).
 
 # MLP
 Multi-Layer Perception
 - an MLP is a stack of pereptrons
-- perceptron can find line f(x) that seperates two groups of data
-- a perceptron is a single neuron: rececieve signal from other neurons/input + 1, fire an output (strength not correlated with inputs) to other neurons/output if the sum of the signal passes a threshhold
+- perceptron can find line f(x) that separates two groups of data
+- a perceptron is a single neuron: receive signal from other neurons/input + 1, fire an output (strength not correlated with inputs) to other neurons/output if the sum of the signal passes a threshold
 - the signal strength inputs/outputs are trainable coefficients
 - input layer -> hidden layers -> output layer
 - every neuron is connected to the outputs of every neuron on the previous layer
-- can only recieve 1D (flat) input
+- can only receive 1D (flat) input
 
 # ConvNets
-Convolutional Network
+Convolution Network
 - basically apply a bunch of math operations on the image in a pipe
-- kernel is the grid of coefficents that the image is convoluted by
-- convoloution eventually ends in a "feature", which is passed to a non-Conv net after being flattened into a 1-D input
-- essentially training a convoloution-based compression algorithem before feeding the result to a more normal neural net
+- kernel is the grid of coefficients that the image is convoluted by
+- convolution eventually ends in a "feature", which is passed to a non-Conv net after being flattened into a 1-D input
+- essentially training a convolution-based compression algorithm before feeding the result to a more normal neural net
 - non-conv net is an MLP where the neurons are fully connected
 - max-pooling: a kernel that outputs the max value in each window, makes image-shifting less of a problem
 
 # Reinforcement Learning
 - no input or examples
 - an agent makes changes to an environment, and is rewarded or punished based off of the impact of those actions
-- agent should do Markov Decision Process: make the best decision to maximize reward independant of past actions
+- agent should do Markov Decision Process: make the best decision to maximize reward independent of past actions
 - mouse = agent; maze = environment; cheese = positive reward; trap = negative reward
-- set discount coefficency so rewards farther in the future are less rewarding then more imminent rewards
+- set discount efficiency so rewards farther in the future are less rewarding then more imminent rewards
 - Deep Q-Learning (DQN): use ML to estimate future rewards for an action
-- use MLP with N neurons to calculate the reward functions for N diferent actions
+- use MLP with N neurons to calculate the reward functions for N different actions
 
 # BREAKOUTTRON-9000
 A. game analysis
 - agent: paddle at 1-D position at the bottom of the screen
-- environment: 210x160x3 2D space with 6 rows of brics and a ball ricocheting between brics and paddle.
+- environment: 210x160x3 2D space with 6 rows of bricks and a ball ricocheting between bricks and paddle.
 - reward: braking a brick results in various points based off of color; loosing a ball is -1 point
 - decisions: move left, move right, don't move
-- difficulty: phisically bigger space, must predict ball movements using multiple frames, delayed rewards (needed for optimal strat)
+- difficulty: physically bigger space, must predict ball movements using multiple frames, delayed rewards (needed for optimal strat)
 B. structure
-- preprosessing: make RGB colors black and white
+- prepossessing: make RGB colors black and white
 _ input state: stack last 4 frames to the environment input
-- Convolutional layer 1: 32 8x8 kernels, step=4. ReLU
-- Convolutional layer 2: 64 4x4 kernels, step=2. ReLU
-- Convolutional layer 3: 64 3x3 kernels, step=1. ReLU
-- Convolutional layer 4: Flatten
+- Convolution layer 1: 32 8x8 kernels, step=4. ReLU
+- Constitutional layer 2: 64 4x4 kernels, step=2. ReLU
+- Constitutional layer 3: 64 3x3 kernels, step=1. ReLU
+- Constitutional layer 4: Flatten
 - Dense layer 1: 256 Dense Perception. ReLU
-- Output: Output Q values as same number of actions. Linier activartion
-- Action: Choose acton that coresponds with with highest Q value
+- Output: Output Q values as same number of actions. Linear activation
+- Action: Choose action that corresponds with with highest Q value
 C. epilogue
 Open source rocks
 - pretrained model "zoo"s
@@ -67,5 +67,12 @@ Advantage Actor Critic
 - Don't just depend on thing that makes Q(x) as high as possible now, but improving it (simulate exiting comfort zone)
 - Actor controls agent behavior
 - Share first few (hidden, feature extraction) layers
-- Can extimate based on present, having many agents and sync individual agent improvements to other models
+- Can estimate based on present, having many agents and sync individual agent improvements to other models
 - You can load a network from stable_baseline, see baselines_breakout.py
+
+# DDPG
+Deep Deterministic Policy Gradients
+- DQN can't do continuous actions because it can't estimate Q(x)for continuous outputs
+- DDPG uses critic an actor networks
+- Actor outputs continuous actions
+- Critic is given continuous inputs
