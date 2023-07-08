@@ -31,9 +31,41 @@ Convolutional Network
 - max-pooling: a kernel that outputs the max value in each window, makes image-shifting less of a problem
 
 # Reinforcement Learning
+- no input or examples
 - an agent makes changes to an environment, and is rewarded or punished based off of the impact of those actions
 - agent should do Markov Decision Process: make the best decision to maximize reward independant of past actions
 - mouse = agent; maze = environment; cheese = positive reward; trap = negative reward
 - set discount coefficency so rewards farther in the future are less rewarding then more imminent rewards
 - Deep Q-Learning (DQN): use ML to estimate future rewards for an action
 - use MLP with N neurons to calculate the reward functions for N diferent actions
+
+# BREAKOUTTRON-9000
+A. game analysis
+- agent: paddle at 1-D position at the bottom of the screen
+- environment: 210x160x3 2D space with 6 rows of brics and a ball ricocheting between brics and paddle.
+- reward: braking a brick results in various points based off of color; loosing a ball is -1 point
+- decisions: move left, move right, don't move
+- difficulty: phisically bigger space, must predict ball movements using multiple frames, delayed rewards (needed for optimal strat)
+B. structure
+- preprosessing: make RGB colors black and white
+_ input state: stack last 4 frames to the environment input
+- Convolutional layer 1: 32 8x8 kernels, step=4. ReLU
+- Convolutional layer 2: 64 4x4 kernels, step=2. ReLU
+- Convolutional layer 3: 64 3x3 kernels, step=1. ReLU
+- Convolutional layer 4: Flatten
+- Dense layer 1: 256 Dense Perception. ReLU
+- Output: Output Q values as same number of actions. Linier activartion
+- Action: Choose acton that coresponds with with highest Q value
+C. epilogue
+Open source rocks
+- pretrained model "zoo"s
+- openAI's rad models
+
+# A2C
+Advantage Actor Critic
+- Critic measures how good an action is (like estimating Q-function, but using a network to estimate change)
+- Don't just depend on thing that makes Q(x) as high as possible now, but improving it (simulate exiting comfort zone)
+- Actor controls agent behavior
+- Share first few (hidden, feature extraction) layers
+- Can extimate based on present, having many agents and sync individual agent improvements to other models
+- You can load a network from stable_baseline, see baselines_breakout.py
