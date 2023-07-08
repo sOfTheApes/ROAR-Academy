@@ -1,3 +1,4 @@
+# Gradiant Descent
 - Function (idk)(in format with defined (a,b))
 - data (noisy)
 - penalty function: returns lower values if fed (a,b) that results in functions closer to Function
@@ -10,7 +11,8 @@
 
 a man lost his glasses on the lowest point of a valley. all he can see is his notebook and a pen. he can measure his altitude with the penalty function (he is also a wizard he can just do that). he can walk all over the valley and note the hight of all the points, then go back to the lowest point, but that sucks. he can also use gradient decent, using some funky spells to walk to the lowest point his legs can reach. his legs are lambda inches long. if they are too long, he would just step over the glasses. he can make his legs longer or shorter based on what would get him a better result for each step (he keeps spare legs in his suitcase, you see).
 
-- MLP = Multi-Layer Perception
+# MLP
+Multi-Layer Perception
 - an MLP is a stack of pereptrons
 - perceptron can find line f(x) that seperates two groups of data
 - a perceptron is a single neuron: rececieve signal from other neurons/input + 1, fire an output (strength not correlated with inputs) to other neurons/output if the sum of the signal passes a threshhold
@@ -19,10 +21,19 @@ a man lost his glasses on the lowest point of a valley. all he can see is his no
 - every neuron is connected to the outputs of every neuron on the previous layer
 - can only recieve 1D (flat) input
 
-- ConvNets = convolutional network
+# ConvNets
+Convolutional Network
 - basically apply a bunch of math operations on the image in a pipe
 - kernel is the grid of coefficents that the image is convoluted by
 - convoloution eventually ends in a "feature", which is passed to a non-Conv net after being flattened into a 1-D input
 - essentially training a convoloution-based compression algorithem before feeding the result to a more normal neural net
 - non-conv net is an MLP where the neurons are fully connected
 - max-pooling: a kernel that outputs the max value in each window, makes image-shifting less of a problem
+
+# Reinforcement Learning
+- an agent makes changes to an environment, and is rewarded or punished based off of the impact of those actions
+- agent should do Markov Decision Process: make the best decision to maximize reward independant of past actions
+- mouse = agent; maze = environment; cheese = positive reward; trap = negative reward
+- set discount coefficency so rewards farther in the future are less rewarding then more imminent rewards
+- Deep Q-Learning (DQN): use ML to estimate future rewards for an action
+- use MLP with N neurons to calculate the reward functions for N diferent actions
